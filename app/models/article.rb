@@ -7,7 +7,8 @@ class Article < ActiveRecord::Base
 
   private
   def set_url
-    time = Time.now
-    self.url = "articles/#{time.month}/#{time.day}/#{time.year}/#{self.title.downcase.gsub(' ', '-')}"
+    self.url = title.parameterize
   end
 end
+
+
