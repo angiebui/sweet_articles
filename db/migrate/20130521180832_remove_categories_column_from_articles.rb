@@ -1,9 +1,9 @@
-class RemoveCategoriesColumnFromArticles < ActiveRecord::Migration
-  def up
-    remove_column :articles, :category
-  end
+# class RemoveCategoriesColumnFromArticles < ActiveRecord::Migration
+#   def up
+#     remove_column :articles, :category
+#   end
 
-  def down
-    add_column :articles, :category, :string
-  end
-end
+#   def down
+#     add_column :articles, :category, :string
+#   end
+# end

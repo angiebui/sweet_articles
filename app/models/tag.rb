@@ -1,7 +1,7 @@
 class Tag < ActiveRecord::Base
   attr_accessible :name, :article, :article_id
 
-  belongs_to :article
+  has_and_belongs_to_many :articles
 
   validates :name, uniqueness: true
   

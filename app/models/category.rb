@@ -1,7 +1,7 @@
 class Category < ActiveRecord::Base
   attr_accessible :name, :article
 
-  belongs_to :article
+  # has_many :articles
 
   validates :name, uniqueness: true
 

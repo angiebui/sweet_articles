@@ -6,7 +6,7 @@ namespace :db do
 
     time = Benchmark.measure do
       Article.all.each do |article|
-        Category.create(name: article.category, article: article)
+        Category.create(name: article.category)
       end
     end
 
@@ -19,8 +19,21 @@ namespace :db do
     time = Benchmark.measure do
       Article.all.each do |article|
         article.tags.split(', ').each do |tag|
-          Tag.create(name: tag, article_id: article.id)
+          Tag.create(name: tag)
         end
+      end
+    end
+
+    puts time
+  end
+
+  desc "Populate category_id in articles table"
+  task :populate_category_id => :environment do
+
+    time = Benchmark.measure do
+      Article.all.each do |article|
+        article.category_id = Category.find_by_name(article.category).id
+        article.save!
       end
     end
 
