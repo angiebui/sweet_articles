@@ -5,6 +5,10 @@ class Article < ActiveRecord::Base
 
   attr_accessible :category, :tags, :description, :url, :title 
 
+  def self.find_by_title title
+    self.where(:title => title.gsub("-", " ")).first
+  end
+
   private
   def set_url
     self.url = title.parameterize
